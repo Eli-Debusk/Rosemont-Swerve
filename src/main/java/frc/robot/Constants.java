@@ -52,6 +52,6 @@ public final class Constants {
     //#MOVEMENT CONSTANTS
 
     ////Creating PID Constants for Wheel Pivoting
-    public static final double kProportional = 0.5;
+    public static final double kPivotProportional = 0.5;
   }
 }
