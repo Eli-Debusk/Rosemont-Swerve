@@ -2,9 +2,9 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
-public class CommandContainer {
+public class CommandCenter {
   
-  public CommandContainer() {
+  public CommandCenter() {
     configureBindings();
   }
 
