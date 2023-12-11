@@ -1,15 +1,16 @@
 package frc.robot.rosemont.util;
 
 import com.revrobotics.CANSparkMax;
+import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.math.controller.PIDController;
 
 //#This little buddy is what we will be using for the NeoSwerveDrive in 2024
-public class REVNeo extends CANSparkMax {
+public class NEOBrushlessMotor extends CANSparkMax {
 
     private PIDController _controller = new PIDController(0, 0, 0);
 
-    public REVNeo(int deviceId) {
+    public NEOBrushlessMotor(int deviceId) {
         super(deviceId, MotorType.kBrushless);
     }
 
