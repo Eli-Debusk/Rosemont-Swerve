@@ -1,7 +1,6 @@
 package frc.robot.rosemont.util;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.math.controller.PIDController;
 
@@ -16,6 +15,10 @@ public class NEOBrushlessMotor extends CANSparkMax {
 
     public void configPIDController(double kP, double kI, double kD) {
         _controller.setPID(kP, kI, kD);
+    }
+
+    public void configPIDControllerCI(double minInput, double maxInput) {
+        _controller.enableContinuousInput(minInput, maxInput);
     }
 
     public void runToPosition(double position) {

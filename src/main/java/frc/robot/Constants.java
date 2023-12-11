@@ -53,5 +53,8 @@ public final class Constants {
 
     ////Creating PID Constants for Wheel Pivoting
     public static final double kPivotProportional = 0.5;
+
+    ////Creating Speed Limits for Safety
+    public static final double kMaxPhysicalSpeed = 5;
   }
 }
