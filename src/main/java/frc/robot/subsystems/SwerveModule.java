@@ -2,6 +2,7 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.sensors.CANCoder;
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.CANSparkMax.IdleMode;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
@@ -42,6 +43,8 @@ public class SwerveModule {
         ////DEVICE CONFIGURATION
         driveNEO.setInverted(driveReverse);
         pivotNEO.setInverted(pivotReverse);
+
+        driveNEO.setIdleMode(IdleMode.kBrake);
 
         driveEncoder.setPositionConversionFactor(SwerveConstants.DriveRotationToMeter);
         driveEncoder.setVelocityConversionFactor(SwerveConstants.DriveRPMToMPS);
@@ -97,10 +100,34 @@ public class SwerveModule {
         if (Math.abs(moduleState.speedMetersPerSecond) < 0.001) {
             return;
         }
-        
+
         //Runs an optimization algorithm to reduce travel distance of the pivot motor
         moduleState = SwerveModuleState.optimize(moduleState, getModuleState().angle); 
+
+        ////Motor Outputs:
+        /*
+        Gets the wanted velocity of the drive motor and divides it by the maximum speed 
+        of the chassis to get the desired power output of the motor.
+        */
         driveNEO.set(RoboMath.clip(moduleState.speedMetersPerSecond / SwerveConstants.kMaxPhysicalSpeed, -1, 1));
+
+        //Retrieves the desired angle of the pivot motor and runs the motor to the desired angle using the NEOBrushlessMotor PID Controller
         pivotNEO.runToPosition(moduleState.angle.getRadians());
+    }
+
+    public void zeroModules() {
+        driveNEO.stopMotor();
+        pivotNEO.runToPosition(0);
+    }
+
+    ////UTIL FUNCTIONS
+    public void resetEncoders() {
+        driveEncoder.setPosition(0);
+        pivotEncoder.setPosition(0);
+    }
+
+    public void stopMotors() {
+        driveNEO.stopMotor();
+        pivotNEO.stopMotor();
     }
 }
