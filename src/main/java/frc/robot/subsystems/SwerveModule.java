@@ -98,7 +98,8 @@ public class SwerveModule {
     }
 
     public void setModuleState(SwerveModuleState moduleState) { //Used to set the desired state of the module
-        if (Math.abs(moduleState.speedMetersPerSecond) < 0.001) {
+
+        if (Math.abs(moduleState.speedMetersPerSecond) < 0.001) { //Discards miniscule speed values
             return;
         }
 
