@@ -9,6 +9,7 @@ import frc.robot.Constants.*;
 
 import frc.robot.Constants.SwerveConstants;
 import frc.robot.rosemont.util.NEOBrushlessMotor;
+import frc.robot.rosemont.util.RoboMath;
 
 ////#Swerve Module Class, (using NEO Motors, and CTRE-CANCoder Absolute Encoder)
 public class SwerveModule {
@@ -96,9 +97,10 @@ public class SwerveModule {
         if (Math.abs(moduleState.speedMetersPerSecond) < 0.001) {
             return;
         }
-
-        moduleState = SwerveModuleState.optimize(moduleState, getModuleState().angle);
-        driveNEO.set(moduleState.speedMetersPerSecond / SwerveConstants.kMaxPhysicalSpeed);
+        
+        //Runs an optimization algorithm to reduce travel distance of the pivot motor
+        moduleState = SwerveModuleState.optimize(moduleState, getModuleState().angle); 
+        driveNEO.set(RoboMath.clip(moduleState.speedMetersPerSecond / SwerveConstants.kMaxPhysicalSpeed, -1, 1));
         pivotNEO.runToPosition(moduleState.angle.getRadians());
     }
 }

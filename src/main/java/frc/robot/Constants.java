@@ -35,8 +35,8 @@ public final class Constants {
     public static final double kWheelCircumference = Units.inchesToMeters(1.5) * Math.PI;
 
     //:i gear ratios
-    public static final double kDriveGearRatio = 1 / 8.14;
-    public static final double kPivotGearRatio = 1 / 21.4285714;
+    public static final double kDriveGearRatio = 1 / 8.14; //Found at SwerveDriveSpecialties MK4I Description
+    public static final double kPivotGearRatio = 1 / 21.4285714; //Found at SwerveDriveSpecialties MK4I Description
 
     //#CONVERSION CONSTANTS
 
@@ -55,6 +55,15 @@ public final class Constants {
     public static final double kPivotProportional = 0.5;
 
     ////Creating Speed Limits for Safety
-    public static final double kMaxPhysicalSpeed = 5;
+    public static final double kMaxPhysicalSpeed = 12.5; //Found at SwerveDriveSpecialties MK4I Description
+    public static final double kMaxAngularSpeed = 3 * Math.PI; //2π Radians per second (1 Rotation per second)
+
+    public static final double kNormalPhysicalSpeedTeleOP = 6;
+    public static final double kFastPhysicalSpeedTeleOP = 10;
+
+    public static final double kNormalAngularSpeedTeleOP = 2 * Math.PI;
+    public static final double kFastAngularSpeedTeleOP = 2.5 * Math.PI;
+
+    public static final double kNormalPhysicalSpeedAuto = 5;
   }
 }
