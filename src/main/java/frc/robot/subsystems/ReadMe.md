@@ -1,6 +1,6 @@
 # ROBOT SUBSYSTEMS
 
 ## SwerveModule.java
-For this specific varient of the Swerve Module, we are using the MK4I Swerve Modules  
-by [**Swerve Drive Specailties**](https://www.swervedrivespecialties.com/products/mk4i-swerve-module). Our chosen devices are: 2 **NEO Brushless Motors**, and  
+For this specific varient of the Swerve Module, we are using the [MK4I Swerve Modules](https://www.swervedrivespecialties.com/products/mk4i-swerve-module)  
+by **Swerve Drive Specailties**. Our chosen devices are: 2 **NEO Brushless Motors**, and  
 1 **CTRE-CANCoder**. For our calculations, we use the `SwerveModuleState` class builtin by WPILib
