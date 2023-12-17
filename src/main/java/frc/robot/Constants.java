@@ -65,5 +65,8 @@ public final class Constants {
     public static final double kFastAngularSpeedTeleOP = 2.5 * Math.PI;
 
     public static final double kNormalPhysicalSpeedAuto = 5;
+
+    public static final double kMaxPhysicalAccelerationTeleOP = 3;
+    public static final double kMaxAngularAccelerationTeleOP = 3;
   }
 }

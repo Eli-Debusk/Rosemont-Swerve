@@ -117,10 +117,10 @@ public class SwerveModule {
         pivotNEO.runToPosition(moduleState.angle.getRadians());
     }
 
-    public void zeroModules() { //Uses the relative encoder to zero the wheel angle 
+    public void zeroModule() { //Uses the relative encoder to zero the wheel angle 
         driveNEO.stopMotor();
         pivotNEO.runToPosition(0);
-    } 
+    }
 
     ////UTIL FUNCTIONS
     public void resetEncoders() { //Resets the relative encoder's position to 0
@@ -131,5 +131,9 @@ public class SwerveModule {
     public void stopMotors() { //Stops the drive and pivot motors
         driveNEO.stopMotor();
         pivotNEO.stopMotor();
+    }
+
+    public void zeroRelativeEncoder() {
+        pivotEncoder.setPosition(getAbsolutePosition());
     }
 }
