@@ -21,10 +21,10 @@ public class SwerveDriveController extends CommandBase {
   private final Supplier<Double> speedRSupplier;
   private final Supplier<Double> speedModifier;
 
-  private final SlewRateLimiter omniAccelLimiter;
+  private final SlewRateLimiter cardinalAccelLimiter;
   private final SlewRateLimiter angularAccelLimiter;
 
-  private final DualFactorSpeedController omniDualLevelMaxSpeed;
+  private final DualFactorSpeedController cardinalDualLevelMaxSpeed;
   private final DualFactorSpeedController angularDualLevelMaxSpeed;
 
   public SwerveDriveController(
@@ -41,10 +41,10 @@ public class SwerveDriveController extends CommandBase {
     this.speedRSupplier = rSupplier;
     this.speedModifier = speedModifierSupplier;
 
-    this.omniAccelLimiter = new SlewRateLimiter(SwerveConstants.kMaxPhysicalAccelerationTeleOP);
+    this.cardinalAccelLimiter = new SlewRateLimiter(SwerveConstants.kMaxPhysicalAccelerationTeleOP);
     this.angularAccelLimiter = new SlewRateLimiter(SwerveConstants.kMaxAngularAccelerationTeleOP);
 
-    this.omniDualLevelMaxSpeed = new DualFactorSpeedController(
+    this.cardinalDualLevelMaxSpeed = new DualFactorSpeedController(
       SwerveConstants.kNormalPhysicalSpeedTeleOP, 
       SwerveConstants.kFastPhysicalSpeedTeleOP
     );
@@ -72,8 +72,8 @@ public class SwerveDriveController extends CommandBase {
     ySpeed = RoboMath.applyDeadband(ySpeed, TeleOPConstants.kSpeedDeadband);
     rSpeed = RoboMath.applyDeadband(rSpeed, TeleOPConstants.kSpeedDeadband);
 
-    xSpeed = omniAccelLimiter.calculate(xSpeed) * omniDualLevelMaxSpeed.calculate(speedModifier.get());
-    ySpeed = omniAccelLimiter.calculate(ySpeed) * omniDualLevelMaxSpeed.calculate(speedModifier.get());
+    xSpeed = cardinalAccelLimiter.calculate(xSpeed) * cardinalDualLevelMaxSpeed.calculate(speedModifier.get());
+    ySpeed = cardinalAccelLimiter.calculate(ySpeed) * cardinalDualLevelMaxSpeed.calculate(speedModifier.get());
     rSpeed = angularAccelLimiter.calculate(rSpeed) * angularDualLevelMaxSpeed.calculate(speedModifier.get());
 
     ChassisSpeeds chassisSpeeds;
