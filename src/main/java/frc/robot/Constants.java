@@ -1,5 +1,7 @@
 package frc.robot;
 
+import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
 
 public final class Constants {
@@ -68,5 +70,20 @@ public final class Constants {
 
     public static final double kMaxPhysicalAccelerationTeleOP = 3;
     public static final double kMaxAngularAccelerationTeleOP = 3;
+
+    ////Physical Kinematics
+    public static final double kTrackWidth = 0.5;
+    public static final double kTrackLength = 0.5;
+
+    public static final SwerveDriveKinematics swerveKinematics = new SwerveDriveKinematics(
+      new Translation2d(kTrackLength / 2, -kTrackWidth / 2),
+      new Translation2d(kTrackLength / 2, kTrackWidth / 2),
+      new Translation2d(-kTrackLength / 2, -kTrackWidth / 2),
+      new Translation2d(-kTrackLength / 2, kTrackWidth / 2)
+    );
+  }
+
+  public final static class TeleOPConstants {
+    public static final double kSpeedDeadband = 0.15;
   }
 }
