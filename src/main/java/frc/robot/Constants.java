@@ -72,8 +72,8 @@ public final class Constants {
     public static final double kMaxAngularAccelerationTeleOP = 3;
 
     ////Physical Kinematics
-    public static final double kTrackWidth = 0.5;
-    public static final double kTrackLength = 0.5;
+    public static final double kTrackWidth = 0.7493;
+    public static final double kTrackLength = 0.7493;
 
     public static final SwerveDriveKinematics swerveKinematics = new SwerveDriveKinematics(
       new Translation2d(kTrackLength / 2, -kTrackWidth / 2),
