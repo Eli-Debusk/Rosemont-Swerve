@@ -1,4 +1,4 @@
-package frc.robot.rosemont.util;
+package frc.rosemont.util;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;

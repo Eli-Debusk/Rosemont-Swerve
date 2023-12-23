@@ -1,9 +1,9 @@
-package frc.robot.rosemont.util;
+package frc.rosemont.util;
 
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
-import frc.robot.rosemont.util.RoboMath.DualFactorSpeedController;
+import frc.rosemont.util.RoboMath.DualFactorSpeedController;
 
 //#EXPIREMENTAL: Premade SwerveChassisController, similar to MecanumChassisController in git-rosemont-templates
 public class SwerveChassisController {

@@ -1,4 +1,4 @@
-package frc.robot.rosemont.util;
+package frc.rosemont.util;
 
 public class RoboMath {
     public static double clip(double value, double min, double max) {
