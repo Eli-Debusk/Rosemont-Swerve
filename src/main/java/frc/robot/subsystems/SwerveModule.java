@@ -7,9 +7,8 @@ import com.revrobotics.CANSparkMax.IdleMode;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import frc.robot.Constants.*;
-
-import frc.robot.rosemont.util.NEOBrushlessMotor;
-import frc.robot.rosemont.util.RoboMath;
+import frc.rosemont.util.NEOBrushlessMotor;
+import frc.rosemont.util.RoboMath;
 
 ////#Swerve Module Class, (using NEO Motors, and CTRE-CANCoder Absolute Encoder)
 public class SwerveModule {
