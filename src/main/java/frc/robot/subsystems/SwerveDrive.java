@@ -4,8 +4,12 @@ import com.kauailabs.navx.frc.AHRS;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
+import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.SPI.Port;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SwerveConstants;
 
@@ -46,8 +50,13 @@ public class SwerveDrive extends SubsystemBase {
         false
     );
 
+    ////Odometry Class and Field2D
+    private final SwerveDriveOdometry odometry = new SwerveDriveOdometry(SwerveConstants.swerveKinematics, new Rotation2d(0), null);
+    private final Field2d field = new Field2d();
+
     ////KuaiLabs NavX Gyroscope
     private final AHRS gyroscope = new AHRS(Port.kMXP);
+
 
     ////CLASS INITIALIZATION
     public SwerveDrive() {
@@ -58,6 +67,22 @@ public class SwerveDrive extends SubsystemBase {
             } catch (Exception e) {}
         })
         .start();
+
+        SmartDashboard.putData("Field", field);
+    }
+
+    @Override 
+    public void periodic() {
+        odometry.update(
+            getRotation2D(), 
+            new SwerveModulePosition[] {
+                leftFront.getModulePosition(),
+                rightFront.getModulePosition(),
+                leftBack.getModulePosition(),
+                rightBack.getModulePosition()                
+            }
+        );
+        field.setRobotPose(odometry.getPoseMeters());
     }
 
     ////UTIL FUNCTIONS

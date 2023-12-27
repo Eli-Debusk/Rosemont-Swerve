@@ -5,6 +5,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMax.IdleMode;
 
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import frc.robot.Constants.*;
 import frc.rosemont.util.NEOBrushlessMotor;
@@ -78,6 +79,11 @@ public class SwerveModule {
     //Absolute Encoder
     public double getAbsolutePosition() { //Returns the current position of the absolute encoder
         return absoluteEncoder.getAbsolutePosition();
+    }
+
+    //Returning SwerveModulePosition
+    public SwerveModulePosition getModulePosition() {
+        return new SwerveModulePosition(getDrivePosition(), new Rotation2d(getPivotPosition()));
     }
 
     ////ONLY USE FOR TELEMETRY, NOT FOR CALCULATIONS
