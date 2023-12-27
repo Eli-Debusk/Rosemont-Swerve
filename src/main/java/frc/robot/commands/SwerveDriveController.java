@@ -22,7 +22,7 @@ public class SwerveDriveController extends CommandBase {
   private final Supplier<Double> speedRSupplier;
   private final Supplier<Double> speedModifier;
 
-  private final SlewRateLimiter translateAccelLimiter;
+  private final SlewRateLimiter cardinalAccelLimiter;
   private final SlewRateLimiter angularAccelLimiter;
 
   private final DualFactorSpeedController cardinalDualLevelMaxSpeed;
@@ -39,7 +39,7 @@ public class SwerveDriveController extends CommandBase {
     this.speedRSupplier = () -> controller.getRightX();
     this.speedModifier = () -> controller.getRightTriggerAxis();
 
-    this.translateAccelLimiter = new SlewRateLimiter(SwerveConstants.kMaxPhysicalAccelerationTeleOP);
+    this.cardinalAccelLimiter = new SlewRateLimiter(SwerveConstants.kMaxPhysicalAccelerationTeleOP);
     this.angularAccelLimiter = new SlewRateLimiter(SwerveConstants.kMaxAngularAccelerationTeleOP);
 
     this.cardinalDualLevelMaxSpeed = new DualFactorSpeedController(
@@ -70,8 +70,8 @@ public class SwerveDriveController extends CommandBase {
     ySpeed = RoboMath.applyDeadband(ySpeed, TeleOPConstants.kSpeedDeadband);
     rSpeed = RoboMath.applyDeadband(rSpeed, TeleOPConstants.kSpeedDeadband);
 
-    xSpeed = translateAccelLimiter.calculate(xSpeed) * cardinalDualLevelMaxSpeed.calculate(speedModifier.get());
-    ySpeed = translateAccelLimiter.calculate(ySpeed) * cardinalDualLevelMaxSpeed.calculate(speedModifier.get());
+    xSpeed = cardinalAccelLimiter.calculate(xSpeed) * cardinalDualLevelMaxSpeed.calculate(speedModifier.get());
+    ySpeed = cardinalAccelLimiter.calculate(ySpeed) * cardinalDualLevelMaxSpeed.calculate(speedModifier.get());
     rSpeed = angularAccelLimiter.calculate(rSpeed) * angularDualLevelMaxSpeed.calculate(speedModifier.get());
 
     ChassisSpeeds chassisSpeeds;

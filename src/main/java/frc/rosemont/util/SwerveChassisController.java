@@ -63,7 +63,7 @@ public class SwerveChassisController {
         _deadband = deadband; //Deadband configuration for controller inconsistencies
     }
 
-    public void configDefaults() {
+    public void defaultConfiguration() {
         _dualSpeedCardinalController.configureSpeeds(6, 10); //Cardinal Dual-Speed Controller
         _dualSpeedAngularController.configureSpeeds(2 * Math.PI, 2.5 * Math.PI); //Angular Dual-Speed Controller
 
@@ -77,6 +77,14 @@ public class SwerveChassisController {
         this._ySpeed = ySpeed; //Chassis Y-Speed
         this._rSpeed = rSpeed; //Chassis Rotation-Speed
         this._speedModifier = sModifier; //Chassis Speed Modifier (for dual-speed)
+        this._heading = heading; //Chassis Rotation2d
+    }
+
+    public void setSwerveSpeeds(SuppliedController controller, Rotation2d heading) {
+        this._xSpeed = controller.lx; //Chassis X-Speed
+        this._ySpeed = controller.ly; //Chassis Y-Speed
+        this._rSpeed = controller.rx; //Chassis Rotation-Speed
+        this._speedModifier = controller.rt; //Chassis Speed Modifier (for dual-speed)
         this._heading = heading; //Chassis Rotation2d
     }
 
