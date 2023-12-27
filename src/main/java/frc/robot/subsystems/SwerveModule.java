@@ -15,11 +15,9 @@ import frc.rosemont.util.RoboMath;
 public class SwerveModule {
     
     ////DEVICE INITIALIZATION
-    private final NEOBrushlessMotor driveNEO;
-    private final NEOBrushlessMotor pivotNEO;
+    private final NEOBrushlessMotor driveNEO, pivotNEO;
 
-    private final RelativeEncoder driveEncoder;
-    private final RelativeEncoder pivotEncoder;
+    private final RelativeEncoder driveEncoder, pivotEncoder;
     private final CANCoder absoluteEncoder;
 
     ////CLASS INITIALIZATION
