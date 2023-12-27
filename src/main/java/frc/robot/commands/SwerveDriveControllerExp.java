@@ -17,10 +17,7 @@ public class SwerveDriveControllerExp extends CommandBase {
 
   private final SuppliedController controller;
 
-  public SwerveDriveControllerExp(
-    SwerveDrive subsystem,
-    SuppliedController controller
-  ) {
+  public SwerveDriveControllerExp(SwerveDrive subsystem, SuppliedController controller) {
     this.swerveDriveSystem = subsystem;
 
     this.chassisController = new SwerveChassisController(true);

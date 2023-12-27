@@ -8,10 +8,7 @@ public class OperateShooterPower extends CommandBase {
     private final ExampleShooter shooterSubsystem;
     private final double shooterPower;
 
-    public OperateShooterPower(
-        ExampleShooter shooterSubsystem,
-        double shooterPower
-        ) {
+    public OperateShooterPower(ExampleShooter shooterSubsystem, double shooterPower) {
         this.shooterSubsystem = shooterSubsystem;
         this.shooterPower = shooterPower;
 
@@ -35,5 +32,4 @@ public class OperateShooterPower extends CommandBase {
     public boolean isFinished() {
         return false;
     }
-    
 }
