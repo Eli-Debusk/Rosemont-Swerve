@@ -7,8 +7,6 @@ import frc.robot.subsystems.SwerveDrive;
 import frc.rosemont.util.SuppliedController;
 import frc.rosemont.util.SwerveChassisController;
 
-// @link SwerveDriveControllerExp
-
 public class SwerveDriveControllerExp extends CommandBase {
   
   private final SwerveDrive swerveDriveSystem;
