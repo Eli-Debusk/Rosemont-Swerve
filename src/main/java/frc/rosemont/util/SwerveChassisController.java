@@ -63,6 +63,13 @@ public class SwerveChassisController {
         _deadband = deadband; //Deadband configuration for controller inconsistencies
     }
 
+    public void configDefaults() {
+        _dualSpeedCardinalController.configureSpeeds(6, 10); //Cardinal Dual-Speed Controller
+        _dualSpeedAngularController.configureSpeeds(2 * Math.PI, 2.5 * Math.PI); //Angular Dual-Speed Controller
+
+        _deadband = 0.15; //Deadband configuration for controller inconsistencies
+    }
+
     ////SET SWERVE SPEEDS
     //Sets swerve movement values using given input values
     public void setSwerveSpeeds(double xSpeed, double ySpeed, double rSpeed, double sModifier, Rotation2d heading) {

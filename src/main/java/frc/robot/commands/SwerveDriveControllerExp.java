@@ -5,7 +5,6 @@ import java.util.function.Supplier;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.SwerveConstants;
-import frc.robot.Constants.TeleOPConstants;
 import frc.robot.subsystems.SwerveDrive;
 import frc.rosemont.util.SwerveChassisController;
 
@@ -37,18 +36,7 @@ public class SwerveDriveControllerExp extends CommandBase {
     this.speedModifier = speedModifierSupplier;
 
     this.chassisController = new SwerveChassisController(true);
-
-    this.chassisController.configAccelerators(
-      SwerveConstants.kMaxPhysicalAccelerationTeleOP, 
-      SwerveConstants.kMaxAngularAccelerationTeleOP
-    );
-    
-    this.chassisController.configDualSpeedControllers(
-      new double[]{SwerveConstants.kNormalPhysicalSpeedTeleOP, SwerveConstants.kNormalAngularSpeedTeleOP},
-      new double[]{SwerveConstants.kNormalAngularSpeedTeleOP, SwerveConstants.kFastAngularSpeedTeleOP}
-    );
-
-    this.chassisController.configSafetyMeasures(TeleOPConstants.kSpeedDeadband);
+    this.chassisController.configDefaults();
 
     addRequirements(swerveDriveSystem);
   }

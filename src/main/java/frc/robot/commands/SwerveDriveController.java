@@ -6,6 +6,7 @@ import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.SwerveConstants;
 import frc.robot.Constants.TeleOPConstants;
 import frc.robot.subsystems.SwerveDrive;
@@ -29,17 +30,14 @@ public class SwerveDriveController extends CommandBase {
 
   public SwerveDriveController(
     SwerveDrive subsystem,
-    Supplier<Double> xSupplier,
-    Supplier<Double> ySupplier,
-    Supplier<Double> rSupplier,
-    Supplier<Double> speedModifierSupplier
+    CommandXboxController controller
   ) {
     this.swerveDriveSystem = subsystem;
 
-    this.speedXSupplier = xSupplier;
-    this.speedYSupplier = ySupplier;
-    this.speedRSupplier = rSupplier;
-    this.speedModifier = speedModifierSupplier;
+    this.speedXSupplier = () -> controller.getLeftX();
+    this.speedYSupplier = () -> -controller.getLeftY();
+    this.speedRSupplier = () -> controller.getRightX();
+    this.speedModifier = () -> controller.getRightTriggerAxis();
 
     this.cardinalAccelLimiter = new SlewRateLimiter(SwerveConstants.kMaxPhysicalAccelerationTeleOP);
     this.angularAccelLimiter = new SlewRateLimiter(SwerveConstants.kMaxAngularAccelerationTeleOP);
