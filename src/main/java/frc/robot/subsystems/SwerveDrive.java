@@ -68,11 +68,12 @@ public class SwerveDrive extends SubsystemBase {
         })
         .start();
 
-        SmartDashboard.putData("Field", field);
+        SmartDashboard.putData("Field", field); //Supplies Field data to NetworkTables
     }
 
     @Override 
     public void periodic() {
+        //Updates odometry using SwerveModulePositions
         odometry.update(
             getRotation2D(), 
             new SwerveModulePosition[] {
@@ -81,8 +82,8 @@ public class SwerveDrive extends SubsystemBase {
                 leftBack.getModulePosition(),
                 rightBack.getModulePosition()                
             }
-        );
-        field.setRobotPose(odometry.getPoseMeters());
+        ); 
+        field.setRobotPose(odometry.getPoseMeters()); //Updates field to match odometry 
     }
 
     ////UTIL FUNCTIONS
