@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SwerveConstants;
+import frc.rosemont.util.RoboMath;
 
 public class SwerveDrive extends SubsystemBase {
 
@@ -76,12 +77,7 @@ public class SwerveDrive extends SubsystemBase {
         //Updates odometry using SwerveModulePositions
         odometry.update(
             getRotation2D(), 
-            new SwerveModulePosition[] {
-                leftFront.getModulePosition(),
-                rightFront.getModulePosition(),
-                leftBack.getModulePosition(),
-                rightBack.getModulePosition()                
-            }
+            getSwerveModulePositions()
         ); 
         field.setRobotPose(odometry.getPoseMeters()); //Updates field to match odometry 
     }
@@ -94,7 +90,7 @@ public class SwerveDrive extends SubsystemBase {
     ////FEEDBACK FUNCTIONS
     //IEEE Remainder value from gyroscope angle and value
     public double getHeading() {
-        return Math.IEEEremainder(gyroscope.getAngle(), 360);
+        return RoboMath.headingRemainder(gyroscope.getAngle());
     }
 
     //Retrieving robot Rotation2D value
@@ -119,6 +115,16 @@ public class SwerveDrive extends SubsystemBase {
             leftBack.getPivotPosition(),
             rightFront.getPivotPosition(),
             rightBack.getPivotPosition()
+        };
+    }
+
+    //Returning Module SwerveModulePositions as an array
+    public SwerveModulePosition[] getSwerveModulePositions() {
+        return new SwerveModulePosition[] {
+                leftFront.getModulePosition(),
+                rightFront.getModulePosition(),
+                leftBack.getModulePosition(),
+                rightBack.getModulePosition()                
         };
     }
 

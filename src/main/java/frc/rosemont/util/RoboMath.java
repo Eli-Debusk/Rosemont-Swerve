@@ -9,6 +9,10 @@ public class RoboMath {
         return Math.abs(value) > deadband ? value : 0.0;
     }
 
+    public static double headingRemainder(double angle) {
+        return Math.IEEEremainder(angle, 360);
+    }
+
     public static class DualFactorSpeedController {
         private double _baseSpeed;
         private double _highSpeed;
