@@ -51,10 +51,6 @@ public class SwerveDrive extends SubsystemBase {
         false
     );
 
-    ////Odometry Class and Field2D
-    private final SwerveDriveOdometry odometry = new SwerveDriveOdometry(SwerveConstants.swerveKinematics, new Rotation2d(0), null);
-    private final Field2d field = new Field2d();
-
     ////KuaiLabs NavX Gyroscope
     private final AHRS gyroscope = new AHRS(Port.kMXP);
 
@@ -68,18 +64,6 @@ public class SwerveDrive extends SubsystemBase {
             } catch (Exception e) {}
         })
         .start();
-
-        SmartDashboard.putData("Field", field); //Supplies Field data to NetworkTables
-    }
-
-    @Override 
-    public void periodic() {
-        //Updates odometry using SwerveModulePositions
-        odometry.update(
-            getRotation2D(), 
-            getSwerveModulePositions()
-        ); 
-        field.setRobotPose(odometry.getPoseMeters()); //Updates field to match odometry 
     }
 
     ////UTIL FUNCTIONS
