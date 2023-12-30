@@ -5,7 +5,6 @@ import java.util.function.Supplier;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.SwerveConstants;
@@ -60,7 +59,7 @@ public class SwerveDriveController extends CommandBase {
 
   @Override
   public void initialize() {
-    swerveDriveSystem.zeroModulePivotPositions();
+    //swerveDriveSystem.zeroModulePivotPositions();
   }
 
   @Override
