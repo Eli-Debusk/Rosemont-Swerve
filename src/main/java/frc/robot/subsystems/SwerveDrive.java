@@ -135,11 +135,11 @@ public class SwerveDrive extends SubsystemBase {
     }
 
     //Zeroing swerve modules
-    public void zeroModules() {
-        leftFront.zeroRelativeEncoder();
-        leftBack.zeroRelativeEncoder();
+    public void zeroModulePivotPositions() {
+        leftFront.zeroPivotEncoderToAbs();
+        leftBack.zeroPivotEncoderToAbs();
 
-        rightFront.zeroRelativeEncoder();
-        rightBack.zeroRelativeEncoder();
+        rightFront.zeroPivotEncoderToAbs();
+        rightBack.zeroPivotEncoderToAbs();
     }
 }

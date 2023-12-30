@@ -136,7 +136,7 @@ public class SwerveModule {
         pivotNEO.stopMotor();
     }
 
-    public void zeroRelativeEncoder() {
+    public void zeroPivotEncoderToAbs() {
         pivotEncoder.setPosition(getAbsolutePosition());
     }
 }

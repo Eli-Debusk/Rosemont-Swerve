@@ -5,6 +5,7 @@ import java.util.function.Supplier;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.SwerveConstants;
@@ -21,6 +22,7 @@ public class SwerveDriveController extends CommandBase {
   private final Supplier<Double> speedYSupplier;
   private final Supplier<Double> speedRSupplier;
   private final Supplier<Double> speedModifier;
+  private final Supplier<Boolean> resetPivotSupplier;
 
   private final SlewRateLimiter cardinalAccelLimiter;
   private final SlewRateLimiter angularAccelLimiter;
@@ -38,6 +40,7 @@ public class SwerveDriveController extends CommandBase {
     this.speedYSupplier = () -> -controller.getLeftY();
     this.speedRSupplier = () -> controller.getRightX();
     this.speedModifier = () -> controller.getRightTriggerAxis();
+    this.resetPivotSupplier = () -> controller.x().getAsBoolean();
 
     this.cardinalAccelLimiter = new SlewRateLimiter(SwerveConstants.kMaxPhysicalAccelerationTeleOP);
     this.angularAccelLimiter = new SlewRateLimiter(SwerveConstants.kMaxAngularAccelerationTeleOP);
@@ -57,7 +60,7 @@ public class SwerveDriveController extends CommandBase {
 
   @Override
   public void initialize() {
-    swerveDriveSystem.zeroModules();
+    swerveDriveSystem.zeroModulePivotPositions();
   }
 
   @Override
@@ -83,6 +86,10 @@ public class SwerveDriveController extends CommandBase {
     SwerveModuleState[] swerveStates = SwerveConstants.swerveKinematics.toSwerveModuleStates(chassisSpeeds);
 
     swerveDriveSystem.setDriveState(swerveStates);
+
+    if(resetPivotSupplier.get()) {
+      swerveDriveSystem.zeroModulePivotPositions();
+    } else {}
   }
 
   @Override
