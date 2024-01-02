@@ -74,17 +74,17 @@ public class SwerveDrive extends SubsystemBase {
 
     ////FEEDBACK FUNCTIONS
 
-    //(f) Returns IEEERemainder value from gyroscope angle and value
+    //(f) -> Returns IEEERemainder value from gyroscope angle and value
     public double getHeading() {
         return RoboMath.headingRemainder(gyroscope.getAngle());
     }
 
-    //(f) Retrieves robot Rotation2D value
+    //(f) -> Retrieves robot Rotation2D value
     public Rotation2d getRotation2D() {
         return Rotation2d.fromDegrees(getHeading());
     }
 
-    //(f) Returns an Array of absolute encoder values
+    //(f) -> Returns an Array of absolute encoder values
     public double[] getAbsoluteModulePositions() {
         return new double[] {
             leftFront.getAbsolutePosition(),
@@ -94,7 +94,7 @@ public class SwerveDrive extends SubsystemBase {
         };
     }
 
-    //(f) Returns an Array of relative encoder values
+    //(f) -> Returns an Array of relative encoder values
     public double[] getRelativeModulePositions() {
         return new double[] {
             leftFront.getPivotPosition(),
@@ -104,7 +104,7 @@ public class SwerveDrive extends SubsystemBase {
         };
     }
 
-    //(f) Returns Module SwerveModulePositions as an array
+    //(f) -> Returns Module SwerveModulePositions as an array
     public SwerveModulePosition[] getSwerveModulePositions() {
         return new SwerveModulePosition[] {
                 leftFront.getModulePosition(),
@@ -116,7 +116,7 @@ public class SwerveDrive extends SubsystemBase {
 
     ////MOVEMENT FUNCTIONS
     
-    //(f) Stops motors
+    //(f) -> Stops motors
     public void stopModules() {
         leftFront.stopMotors();
         leftBack.stopMotors();
@@ -124,7 +124,7 @@ public class SwerveDrive extends SubsystemBase {
         rightBack.stopMotors();
     }
 
-    //(f) Sets desired states of all modules in the Swerve Drive
+    //(f) -> Sets desired states of all modules in the Swerve Drive
     public void setDriveState(SwerveModuleState[] driveState) {
         SwerveDriveKinematics.desaturateWheelSpeeds(driveState, SwerveConstants.kMaxPhysicalSpeed); //Normailizing motor speeds
         //(i) Swerve Module States are in the format of an array with front 
@@ -137,7 +137,7 @@ public class SwerveDrive extends SubsystemBase {
         rightBack.setModuleState(driveState[3]);
     }
 
-    //(f) Zeroes pivot encoders on the Swerve Modules
+    //(f) -> Zeroes pivot encoders on the Swerve Modules
     public void zeroModulePivotPositions() {
         leftFront.zeroPivotEncoderToAbs();
         leftBack.zeroPivotEncoderToAbs();

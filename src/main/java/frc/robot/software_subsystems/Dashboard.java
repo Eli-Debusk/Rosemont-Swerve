@@ -9,31 +9,33 @@ import frc.robot.subsystems.SwerveDrive;
 
 public class Dashboard {
 
-    ////Subsystem Classes
+    ////VARIABLE INITIALIZATION
+
+    //(i) Subsystem Classes
     private SwerveDrive swerveDrive;
 
-    ////Odometry Class and Field2D
+    //(i) Odometry Class and Field2D
     private final SwerveDriveOdometry odometry;
     private final Field2d field;
 
     ////CLASS INITIALIZATION
     public Dashboard(SwerveDrive swerveDrive) {
-        //Initializing objects
+        //(i) Defining Variables
         this.swerveDrive = swerveDrive;
         this.field = new Field2d();
 
-        //Constructs new odometry object with initializing fixed values
+        //(f) -> Constructs new odometry object with initializing fixed values
         this.odometry = new SwerveDriveOdometry(SwerveConstants.swerveKinematics, new Rotation2d(0), null);
     }
 
     ////EVENT FUNCTIONS
     public void init() {
-        //Adding the field data to NetworkTables
+        //(f) -> Adding the field data to NetworkTables
         SmartDashboard.putData("Robot Field", field);
     }
 
     public void periodic() {
-        //Updates Odometry with chassis information and updates field using odometry information
+        //(f) -> Updates Odometry with chassis information and updates field using odometry information
         odometry.update(swerveDrive.getRotation2D(), swerveDrive.getSwerveModulePositions()); 
         field.setRobotPose(odometry.getPoseMeters()); 
     }
