@@ -15,8 +15,8 @@ public class ExampleShooter extends SubsystemBase {
     public ExampleShooter() {
         
         ////DEVICE DECLARATION
-        leftSpinner = new Falcon500(14); //Left Falcon500
-        rightSpinner = new Falcon500(15); //Right Falcon500
+        leftSpinner = new Falcon500(12); //Left Falcon500
+        rightSpinner = new Falcon500(13); //Right Falcon500
 
         ////DEVICE CONFIGURATION
         leftSpinner.setInverted(false); //Left Falcon500 Direction
@@ -35,5 +35,4 @@ public class ExampleShooter extends SubsystemBase {
         leftSpinner.set(ControlMode.PercentOutput, 0); //Stopping Left Falcon500
         rightSpinner.set(ControlMode.PercentOutput, 0); //Stopping Right Falcon500
     }
-
 }
