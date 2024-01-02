@@ -5,14 +5,12 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.Constants.TeleOPConstants;
 import frc.robot.commands.OperateShooterPower;
 import frc.robot.commands.SwerveDriveController;
-import frc.robot.commands.SwerveDriveControllerExp;
 import frc.robot.subsystems.ExampleShooter;
 import frc.robot.subsystems.SwerveDrive;
-import frc.rosemont.util.SuppliedController;
 
 public class CommandCenter {
   
-  public static final SwerveDrive swerveDrive = new SwerveDrive();
+  public final SwerveDrive swerveDrive = new SwerveDrive();
 
   public static final ExampleShooter shooter = new ExampleShooter();
 
