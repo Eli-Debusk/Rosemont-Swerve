@@ -6,23 +6,17 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class SuppliedController {
-    private final Supplier<Double> leftYSupplier;
-    private final Supplier<Double> leftXSupplier;
+    private final Supplier<Double> leftYSupplier, leftXSupplier;
 
-    private final Supplier<Double> rightYSupplier;
-    private final Supplier<Double> rightXSupplier;
+    private final Supplier<Double> rightYSupplier, rightXSupplier;
 
-    private final Supplier<Double> leftTriggerSupplier;
-    private final Supplier<Double> rightTriggerSupplier;
+    private final Supplier<Double> leftTriggerSupplier, rightTriggerSupplier;
 
-    public double ly;
-    public double lx;
+    public double ly, lx;
 
-    public double ry;
-    public double rx;
+    public double ry, rx;
 
-    public double lt;
-    public double rt;
+    public double lt, rt;
 
     public SuppliedController(XboxController controller, boolean reverseLeftY) {
         this.leftYSupplier = () -> reverseLeftY == true ? -controller.getLeftY() : controller.getLeftY();
