@@ -12,7 +12,7 @@ public class CommandCenter {
   
   public final SwerveDrive swerveDrive = new SwerveDrive();
 
-  public static final ExampleShooter shooter = new ExampleShooter();
+  public final ExampleShooter shooter = new ExampleShooter();
 
   public final CommandXboxController controller = new CommandXboxController(TeleOPConstants.kDriveControllerPort);
 
