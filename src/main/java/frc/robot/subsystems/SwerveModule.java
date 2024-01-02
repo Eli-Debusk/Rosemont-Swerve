@@ -8,6 +8,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import frc.robot.Constants.SwerveConstants;
+import frc.rosemont.util.DefaultModuleProfile;
 import frc.rosemont.util.NEOBrushlessMotor;
 import frc.rosemont.util.RoboMath;
 
@@ -21,7 +22,7 @@ public class SwerveModule {
     private final RelativeEncoder driveEncoder, pivotEncoder;
     private final CANCoder absoluteEncoder;
 
-    ////CLASS INITIALIZATION
+    ////CLASS INITIALIZATIONS
 
     public SwerveModule(
         int driveID,
@@ -58,6 +59,38 @@ public class SwerveModule {
         pivotNEO.configPIDController(SwerveConstants.kPivotProportional, 0, 0);
         pivotNEO.configPIDControllerCI(-Math.PI, Math.PI);
     }  
+
+    public SwerveModule(
+        DefaultModuleProfile profile
+    ) {
+
+        ////DEVICE DECLARATION
+
+        driveNEO = new NEOBrushlessMotor(profile.driveCID);
+        pivotNEO = new NEOBrushlessMotor(profile.pivotCID);
+
+        driveEncoder = driveNEO.getEncoder();
+        pivotEncoder = pivotNEO.getEncoder();
+        absoluteEncoder = new CANCoder(profile.absEncoderCID);
+
+        ////DEVICE CONFIGURATION
+
+        driveNEO.setInverted(profile.driveReversed); //(i) Config direction of the drive motor
+        pivotNEO.setInverted(profile.pivotReversed); //(i) Config direction of the pivot motor
+
+        driveNEO.setIdleMode(IdleMode.kBrake); //(i) Config the brake|coast mode of the drive motor
+
+        //(f) -> Configuring conversion factors for encoder readings
+        driveEncoder.setPositionConversionFactor(SwerveConstants.DriveRotationToMeter);
+        driveEncoder.setVelocityConversionFactor(SwerveConstants.DriveRPMToMPS);
+
+        pivotEncoder.setPositionConversionFactor(SwerveConstants.PivotRotationToRadians);
+        pivotEncoder.setVelocityConversionFactor(SwerveConstants.PivotRPMToRPS);
+
+        //(i) Configuring PID Controller for the pivot motor
+        pivotNEO.configPIDController(SwerveConstants.kPivotProportional, 0, 0);
+        pivotNEO.configPIDControllerCI(-Math.PI, Math.PI);
+    } 
 
     ////FEEDBACK FUNCTIONS
 

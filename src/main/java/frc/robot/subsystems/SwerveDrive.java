@@ -9,7 +9,9 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SwerveConstants;
+//import frc.rosemont.util.DefaultModuleProfile;
 import frc.rosemont.util.RoboMath;
+//import frc.rosemont.util.RosemontConstants.*;
 
 //(#) Full Swerve Drive Class (using four SDS MK4I Swerve Modules)
 public class SwerveDrive extends SubsystemBase {
@@ -51,6 +53,11 @@ public class SwerveDrive extends SubsystemBase {
         true,
         false
     );
+
+    // private final SwerveModule leftBack = new SwerveModule(new DefaultModuleProfile(SwerveModulePositions.LEFTBACK));
+    // private final SwerveModule leftFront = new SwerveModule(new DefaultModuleProfile(SwerveModulePositions.LEFTFRONT));
+    // private final SwerveModule rightBack = new SwerveModule(new DefaultModuleProfile(SwerveModulePositions.RIGHTBACK));
+    // private final SwerveModule rightFront = new SwerveModule(new DefaultModuleProfile(SwerveModulePositions.RIGHTFRONT));
 
     //(i) KuaiLabs NavX Gyroscope
     private final AHRS gyroscope = new AHRS(Port.kMXP);
