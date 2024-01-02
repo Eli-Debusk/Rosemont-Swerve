@@ -86,6 +86,6 @@ public final class Constants {
   public final static class TeleOPConstants {
     public static final double kSpeedDeadband = 0.15;
 
-    public static final int kController1Port = 0;
+    public static final int kDriveControllerPort = 0;
   }
 }
