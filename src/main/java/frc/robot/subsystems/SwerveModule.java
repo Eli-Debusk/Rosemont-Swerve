@@ -8,7 +8,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import frc.robot.Constants.SwerveConstants;
-import frc.rosemont.util.DefaultModuleProfile;
+import frc.rosemont.util.DefaultSwerveModuleProfile;
 import frc.rosemont.util.NEOBrushlessMotor;
 import frc.rosemont.util.RoboMath;
 
@@ -61,7 +61,7 @@ public class SwerveModule {
     }  
 
     public SwerveModule(
-        DefaultModuleProfile profile
+        DefaultSwerveModuleProfile profile
     ) {
 
         ////DEVICE DECLARATION

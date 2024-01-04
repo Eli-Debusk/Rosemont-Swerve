@@ -2,7 +2,7 @@ package frc.rosemont.util;
 
 import frc.rosemont.util.RosemontConstants.*;
 
-public class DefaultModuleProfile {  
+public class DefaultSwerveModuleProfile {  
      
     public final int driveCID;
     public final int pivotCID;
@@ -10,7 +10,7 @@ public class DefaultModuleProfile {
     public final boolean driveReversed;
     public final boolean pivotReversed;
 
-    public DefaultModuleProfile(int modulePosition) {
+    public DefaultSwerveModuleProfile(int modulePosition) {
 
         if (modulePosition == SwerveModulePositions.LEFTBACK) {
             driveCID = 1;
