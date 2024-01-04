@@ -24,17 +24,15 @@ public class SwerveModule {
 
     ////CLASS INITIALIZATIONS
 
-    public SwerveModule(
-        DefaultSwerveModuleProfile profile
-    ) {
+    public SwerveModule (DefaultSwerveModuleProfile profile) {
 
         ////DEVICE DECLARATION
 
         driveNEO = new NEOBrushlessMotor(profile.driveCID);
         pivotNEO = new NEOBrushlessMotor(profile.pivotCID);
 
-        driveEncoder = driveNEO.getEncoder();
-        pivotEncoder = pivotNEO.getEncoder();
+        driveEncoder = driveNEO.getEncoder(); //Uses the NEO's built-in encoder
+        pivotEncoder = pivotNEO.getEncoder(); //Uses the NEO's built-in encoder
         absoluteEncoder = new CANCoder(profile.absEncoderCID);
 
         ////DEVICE CONFIGURATION
