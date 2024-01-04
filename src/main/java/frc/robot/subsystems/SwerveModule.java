@@ -25,42 +25,6 @@ public class SwerveModule {
     ////CLASS INITIALIZATIONS
 
     public SwerveModule(
-        int driveID,
-        int pivotID,
-        int cancoderID,
-        boolean driveReverse,
-        boolean pivotReverse
-    ) {
-
-        ////DEVICE DECLARATION
-
-        driveNEO = new NEOBrushlessMotor(driveID);
-        pivotNEO = new NEOBrushlessMotor(pivotID);
-
-        driveEncoder = driveNEO.getEncoder();
-        pivotEncoder = pivotNEO.getEncoder();
-        absoluteEncoder = new CANCoder(cancoderID);
-
-        ////DEVICE CONFIGURATION
-
-        driveNEO.setInverted(driveReverse); //(i) Config direction of the drive motor
-        pivotNEO.setInverted(pivotReverse); //(i) Config direction of the pivot motor
-
-        driveNEO.setIdleMode(IdleMode.kBrake); //(i) Config the brake|coast mode of the drive motor
-
-        //(f) -> Configuring conversion factors for encoder readings
-        driveEncoder.setPositionConversionFactor(SwerveConstants.DriveRotationToMeter);
-        driveEncoder.setVelocityConversionFactor(SwerveConstants.DriveRPMToMPS);
-
-        pivotEncoder.setPositionConversionFactor(SwerveConstants.PivotRotationToRadians);
-        pivotEncoder.setVelocityConversionFactor(SwerveConstants.PivotRPMToRPS);
-
-        //(i) Configuring PID Controller for the pivot motor
-        pivotNEO.configPIDController(SwerveConstants.kPivotProportional, 0, 0);
-        pivotNEO.configPIDControllerCI(-Math.PI, Math.PI);
-    }  
-
-    public SwerveModule(
         DefaultSwerveModuleProfile profile
     ) {
 

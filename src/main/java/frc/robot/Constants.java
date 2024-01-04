@@ -33,6 +33,13 @@ public final class Constants {
     public static final int kRightFrontAbsoluteEncoderCAN_ID = 10;
     public static final int kRightBackAbsoluteEncoderCAN_ID = 11;
 
+    //(i) Assigning directions for the motors [drive direction, pivot direction]
+    public static final boolean[] kLeftFrontDirections = {false, false};
+    public static final boolean[] kLeftBackDirections = {false, false};
+
+    public static final boolean[] kRightFrontDirections = {true, false};
+    public static final boolean[] kRightBackDirections = {true, false};
+
     ////MECHANICAL CONSTANTS 
 
     //(i) Wheel circumference

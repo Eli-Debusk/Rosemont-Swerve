@@ -9,55 +9,21 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.SwerveConstants;
+import frc.rosemont.util.DefaultSwerveModuleProfile;
 //import frc.rosemont.util.DefaultModuleProfile;
 import frc.rosemont.util.RoboMath;
 //import frc.rosemont.util.RosemontConstants.*;
+import frc.rosemont.util.RosemontConstants.SwerveModulePositions;
 
 //(#) Full Swerve Drive Class (using four SDS MK4I Swerve Modules)
 public class SwerveDrive extends SubsystemBase {
 
     ////DEVICE INITIALIZATION
 
-    //(i) Front Left Swerve Module
-    private final SwerveModule leftFront = new SwerveModule(
-        SwerveConstants.kLeftFrontDriveCAN_ID,
-        SwerveConstants.kLeftFrontPivotCAN_ID,
-        SwerveConstants.kLeftFrontAbsoluteEncoderCAN_ID,
-        false,
-        false
-    );
-
-    //(i) Back Left Swerve Module
-    private final SwerveModule leftBack = new SwerveModule(
-        SwerveConstants.kLeftBackDriveCAN_ID,
-        SwerveConstants.kLeftBackPivotCAN_ID,
-        SwerveConstants.kLeftBackAbsoluteEncoderCAN_ID,
-        false,
-        false
-    );
-
-    //(i) Front Right Swerve Module
-    private final SwerveModule rightFront = new SwerveModule(
-        SwerveConstants.kRightFrontDriveCAN_ID,
-        SwerveConstants.kRightFrontPivotCAN_ID,
-        SwerveConstants.kRightFrontAbsoluteEncoderCAN_ID,
-        true,
-        false
-    );
-
-    //(i) Back Right Swerve Module
-    private final SwerveModule rightBack = new SwerveModule(
-        SwerveConstants.kRightBackDriveCAN_ID,
-        SwerveConstants.kRightBackPivotCAN_ID,
-        SwerveConstants.kRightBackAbsoluteEncoderCAN_ID,
-        true,
-        false
-    );
-
-    // private final SwerveModule leftBack = new SwerveModule(new DefaultModuleProfile(SwerveModulePositions.LEFTBACK));
-    // private final SwerveModule leftFront = new SwerveModule(new DefaultModuleProfile(SwerveModulePositions.LEFTFRONT));
-    // private final SwerveModule rightBack = new SwerveModule(new DefaultModuleProfile(SwerveModulePositions.RIGHTBACK));
-    // private final SwerveModule rightFront = new SwerveModule(new DefaultModuleProfile(SwerveModulePositions.RIGHTFRONT));
+    private final SwerveModule leftBack = new SwerveModule(new DefaultSwerveModuleProfile(SwerveModulePositions.LEFTBACK));
+    private final SwerveModule leftFront = new SwerveModule(new DefaultSwerveModuleProfile(SwerveModulePositions.LEFTFRONT));
+    private final SwerveModule rightBack = new SwerveModule(new DefaultSwerveModuleProfile(SwerveModulePositions.RIGHTBACK));
+    private final SwerveModule rightFront = new SwerveModule(new DefaultSwerveModuleProfile(SwerveModulePositions.RIGHTFRONT));
 
     //(i) KuaiLabs NavX Gyroscope
     private final AHRS gyroscope = new AHRS(Port.kMXP);

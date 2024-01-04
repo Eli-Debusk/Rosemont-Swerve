@@ -1,5 +1,6 @@
 package frc.rosemont.util;
 
+import frc.robot.Constants.SwerveConstants;
 import frc.rosemont.util.RosemontConstants.*;
 
 public class DefaultSwerveModuleProfile {  
@@ -13,32 +14,32 @@ public class DefaultSwerveModuleProfile {
     public DefaultSwerveModuleProfile(int modulePosition) {
 
         if (modulePosition == SwerveModulePositions.LEFTBACK) {
-            driveCID = 1;
-            pivotCID = 5;
-            absEncoderCID = 9;
-            driveReversed = false;
-            pivotReversed = false;
+            driveCID = SwerveConstants.kLeftBackDriveCAN_ID;
+            pivotCID = SwerveConstants.kLeftBackPivotCAN_ID;
+            absEncoderCID = SwerveConstants.kLeftBackAbsoluteEncoderCAN_ID;
+            driveReversed = SwerveConstants.kLeftBackDirections[0];
+            pivotReversed = SwerveConstants.kLeftBackDirections[1];
 
         } else if (modulePosition == SwerveModulePositions.LEFTFRONT) {
-            driveCID = 0;
-            pivotCID = 4;
-            absEncoderCID = 8;
-            driveReversed = false;
-            pivotReversed = false;
+            driveCID = SwerveConstants.kLeftFrontDriveCAN_ID;
+            pivotCID = SwerveConstants.kLeftFrontPivotCAN_ID;
+            absEncoderCID = SwerveConstants.kLeftFrontAbsoluteEncoderCAN_ID;
+            driveReversed = SwerveConstants.kLeftFrontDirections[0];
+            pivotReversed = SwerveConstants.kLeftFrontDirections[1];
 
         } else if (modulePosition == SwerveModulePositions.RIGHTBACK) {
-            driveCID = 3;
-            pivotCID = 7;
-            absEncoderCID = 11;
-            driveReversed = true;
-            pivotReversed = false;
+            driveCID = SwerveConstants.kRightBackDriveCAN_ID;
+            pivotCID = SwerveConstants.kRightBackPivotCAN_ID;
+            absEncoderCID = SwerveConstants.kRightBackAbsoluteEncoderCAN_ID;
+            driveReversed = SwerveConstants.kRightBackDirections[0];
+            pivotReversed = SwerveConstants.kRightBackDirections[1];
 
         } else if(modulePosition == SwerveModulePositions.RIGHTFRONT) {
-            driveCID = 2;
-            pivotCID = 6;
-            absEncoderCID = 10;
-            driveReversed = true;
-            pivotReversed = false;
+            driveCID = SwerveConstants.kRightFrontDriveCAN_ID;
+            pivotCID = SwerveConstants.kRightFrontPivotCAN_ID;
+            absEncoderCID = SwerveConstants.kRightFrontAbsoluteEncoderCAN_ID;
+            driveReversed = SwerveConstants.kRightFrontDirections[0];
+            pivotReversed = SwerveConstants.kRightFrontDirections[1];
             
         } else {
             driveCID = 0;
