@@ -1,7 +1,7 @@
-package frc.rosemont.util;
+package frc.rosemont.util.profiles;
 
 import frc.robot.Constants.SwerveConstants;
-import frc.rosemont.util.RosemontConstants.*;
+import frc.rosemont.util.profiles.RosemontConstants.*;
 
 public class DefaultSwerveModuleProfile {  
      

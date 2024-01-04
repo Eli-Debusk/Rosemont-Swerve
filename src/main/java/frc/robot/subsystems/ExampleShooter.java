@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.rosemont.util.Falcon500;
+import frc.rosemont.util.hardware.Falcon500;
 
 //#EXAMPLE SHOOTER SUBSYSTEM
 public class ExampleShooter extends SubsystemBase {

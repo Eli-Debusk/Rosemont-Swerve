@@ -1,4 +1,4 @@
-package frc.rosemont.util;
+package frc.rosemont.util.hardware;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonFX;

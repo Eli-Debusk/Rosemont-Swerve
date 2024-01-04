@@ -1,4 +1,4 @@
-package frc.rosemont.util;
+package frc.rosemont.util.hardware;
 
 import com.revrobotics.CANSparkMax;
 

@@ -1,4 +1,4 @@
-package frc.rosemont.util;
+package frc.rosemont.util.profiles;
 
 public class RosemontConstants {
     public class SwerveModulePositions {

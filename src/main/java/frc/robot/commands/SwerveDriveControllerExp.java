@@ -4,8 +4,8 @@ import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants.SwerveConstants;
 import frc.robot.subsystems.SwerveDrive;
-import frc.rosemont.util.SuppliedController;
-import frc.rosemont.util.SwerveChassisController;
+import frc.rosemont.util.controllers.SuppliedController;
+import frc.rosemont.util.controllers.SwerveChassisController;
 
 //(#) Swerve Drive TeleOP Command (EXPIREMENTAL - Not using documented methods; UNTESTED)
 public class SwerveDriveControllerExp extends CommandBase {

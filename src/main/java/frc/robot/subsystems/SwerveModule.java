@@ -8,9 +8,9 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import frc.robot.Constants.SwerveConstants;
-import frc.rosemont.util.DefaultSwerveModuleProfile;
-import frc.rosemont.util.NEOBrushlessMotor;
 import frc.rosemont.util.RoboMath;
+import frc.rosemont.util.hardware.NEOBrushlessMotor;
+import frc.rosemont.util.profiles.DefaultSwerveModuleProfile;
 
 //(#) Swerve Module Class, (using NEO Brushless Motors, and CTRE-CANCoder Absolute Encoder)
 public class SwerveModule {

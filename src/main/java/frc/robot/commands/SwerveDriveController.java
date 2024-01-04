@@ -10,7 +10,7 @@ import frc.robot.Constants.SwerveConstants;
 import frc.robot.Constants.TeleOPConstants;
 import frc.robot.subsystems.SwerveDrive;
 import frc.rosemont.util.RoboMath;
-import frc.rosemont.util.RoboMath.DualFactorSpeedController;
+import frc.rosemont.util.controllers.DualFactorSpeedController;
 
 //(#) The Swerve Drive TeleOP Command using documented configuration
 public class SwerveDriveController extends CommandBase {
