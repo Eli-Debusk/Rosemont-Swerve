@@ -80,6 +80,10 @@ public class SwerveChassisController {
         this._heading = heading; //Chassis Rotation2d
     }
 
+    /** sets movement values for getSwerveSpeeds() 
+    *@param controller SuppliedController that will be used for angular and translation speeds (make sure to call .update())
+    *@param heading Rotation2d of robot orientation
+    */
     public void setSwerveSpeeds(SuppliedController controller, Rotation2d heading) {
         this._xSpeed = controller.lx; //Chassis X-Speed
         this._ySpeed = controller.ly; //Chassis Y-Speed

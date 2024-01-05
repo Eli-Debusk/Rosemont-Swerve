@@ -6,48 +6,44 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 
 public class SuppliedController {
-    private final Supplier<Double> leftYSupplier, leftXSupplier;
+    private final Supplier<Double> _leftYSupplier, _leftXSupplier;
 
-    private final Supplier<Double> rightYSupplier, rightXSupplier;
+    private final Supplier<Double> _rightYSupplier, _rightXSupplier;
 
-    private final Supplier<Double> leftTriggerSupplier, rightTriggerSupplier;
+    private final Supplier<Double> _leftTriggerSupplier, _rightTriggerSupplier;
 
-    public double ly, lx;
-
-    public double ry, rx;
-
-    public double lt, rt;
+    public double ly, lx, ry, rx, lt, rt;
 
     public SuppliedController(XboxController controller, boolean reverseLeftY) {
-        this.leftYSupplier = () -> reverseLeftY == true ? -controller.getLeftY() : controller.getLeftY();
-        this.leftXSupplier = () -> controller.getLeftX();
+        this._leftYSupplier = () -> reverseLeftY == true ? -controller.getLeftY() : controller.getLeftY();
+        this._leftXSupplier = () -> controller.getLeftX();
 
-        this.rightYSupplier = () -> controller.getRightY();
-        this.rightXSupplier = () -> controller.getRightX();
+        this._rightYSupplier = () -> controller.getRightY();
+        this._rightXSupplier = () -> controller.getRightX();
 
-        this.leftTriggerSupplier = () -> controller.getLeftTriggerAxis();
-        this.rightTriggerSupplier = () -> controller.getRightTriggerAxis();
+        this._leftTriggerSupplier = () -> controller.getLeftTriggerAxis();
+        this._rightTriggerSupplier = () -> controller.getRightTriggerAxis();
     }
 
     public SuppliedController(CommandXboxController controller, boolean reverseLeftY) {
-        this.leftYSupplier = () -> reverseLeftY == true ? -controller.getLeftY() : controller.getLeftY();
-        this.leftXSupplier = () -> controller.getLeftX();
+        this._leftYSupplier = () -> reverseLeftY == true ? -controller.getLeftY() : controller.getLeftY();
+        this._leftXSupplier = () -> controller.getLeftX();
 
-        this.rightYSupplier = () -> controller.getRightY();
-        this.rightXSupplier = () -> controller.getRightX();
+        this._rightYSupplier = () -> controller.getRightY();
+        this._rightXSupplier = () -> controller.getRightX();
 
-        this.leftTriggerSupplier = () -> controller.getLeftTriggerAxis();
-        this.rightTriggerSupplier = () -> controller.getRightTriggerAxis();
+        this._leftTriggerSupplier = () -> controller.getLeftTriggerAxis();
+        this._rightTriggerSupplier = () -> controller.getRightTriggerAxis();
     }
 
     public void update() {
-        this.ly = leftYSupplier.get();
-        this.lx = leftXSupplier.get();
+        this.ly = _leftYSupplier.get();
+        this.lx = _leftXSupplier.get();
 
-        this.ry = rightYSupplier.get();
-        this.rx = rightXSupplier.get();
+        this.ry = _rightYSupplier.get();
+        this.rx = _rightXSupplier.get();
 
-        this.lt = leftTriggerSupplier.get();
-        this.rt = rightTriggerSupplier.get();
+        this.lt = _leftTriggerSupplier.get();
+        this.rt = _rightTriggerSupplier.get();
     }
 }
