@@ -1,6 +1,13 @@
 package frc.rosemont.util;
 
 public class RoboMath {
+
+    /** Limits a value to a specified range 
+     * @param value the value that will be affected
+     * @param min the minimum limit
+     * @param max the maximum limit
+     * @return a value that is greater than a minimum and less than a maximum
+     */
     public static double clip(double value, double min, double max) {
         return Math.max(min, Math.min(value, max));
     }

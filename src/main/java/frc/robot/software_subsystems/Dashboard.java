@@ -38,5 +38,17 @@ public class Dashboard {
         //(f) -> Updates Odometry with chassis information and updates field using odometry information
         odometry.update(swerveDrive.getRotation2D(), swerveDrive.getSwerveModulePositions()); 
         field.setRobotPose(odometry.getPoseMeters()); 
+
+        //(f) -> Updates Smartdashboard with Motor Safety information
+        double[] tempuratures = swerveDrive.reportMotorTemps();
+
+        SmartDashboard.putNumber("MTEMP : LF Drive", tempuratures[0]);
+        SmartDashboard.putNumber("MTEMP : LF Pivot", tempuratures[1]);
+        SmartDashboard.putNumber("MTEMP : LB Drive", tempuratures[2]);
+        SmartDashboard.putNumber("MTEMP : LB Pivot", tempuratures[3]);
+        SmartDashboard.putNumber("MTEMP : RF Drive", tempuratures[4]);
+        SmartDashboard.putNumber("MTEMP : RF Pivot", tempuratures[5]);
+        SmartDashboard.putNumber("MTEMP : RB Drive", tempuratures[6]);
+        SmartDashboard.putNumber("MTEMP : RB Pivot", tempuratures[7]);
     }
 }

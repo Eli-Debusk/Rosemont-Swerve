@@ -1,10 +1,5 @@
 package frc.rosemont.util.controllers;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-@JsonAutoDetect(getterVisibility = JsonAutoDetect.Visibility.NONE)
 public class DualFactorSpeedController {
     private double _baseSpeed;
     private double _highSpeed;

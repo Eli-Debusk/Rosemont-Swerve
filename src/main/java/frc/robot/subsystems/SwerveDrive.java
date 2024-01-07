@@ -86,6 +86,20 @@ public class SwerveDrive extends SubsystemBase {
         };
     }
 
+    //(f) -> Returns Module motor tempuratures as an array
+    public double[] reportMotorTemps() {
+        return new double[] {
+            leftBack.reportMotorTempuratures()[0],
+            leftBack.reportMotorTempuratures()[1],
+            leftFront.reportMotorTempuratures()[0],
+            leftFront.reportMotorTempuratures()[1],
+            rightBack.reportMotorTempuratures()[0],
+            rightBack.reportMotorTempuratures()[1],
+            rightFront.reportMotorTempuratures()[0],
+            rightFront.reportMotorTempuratures()[1],
+        };
+    }
+
     ////MOVEMENT FUNCTIONS
     
     //(f) -> Stops motors

@@ -97,6 +97,13 @@ public class SwerveModule {
         };
     }
 
+    public double[] reportMotorTempuratures() {
+        return new double[] {
+            driveNEO.getMotorTemperature(),
+            pivotNEO.getMotorTemperature()
+        };
+    }
+
     ////MOVEMENT FUNCTIONS
 
     //(f) -> Retrieves the current SwerveModuleState given the current motor information
